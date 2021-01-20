@@ -46,7 +46,6 @@ public class Node {
 
   @Override
   public boolean equals(Object o) {
-    //System.out.println("Comparing " + this + " and " + o);
     if (this == o) {
       return true;
     }
@@ -72,4 +71,5 @@ public class Node {
         ", right=" + right +
         '}';
   }
+
 }

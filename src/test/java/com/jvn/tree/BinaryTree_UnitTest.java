@@ -18,4 +18,40 @@ public class BinaryTree_UnitTest {
     Assert.assertEquals(bt1.equals(bt2), expectedEqual);
   }
 
+  public Node searchNode() {
+    Node leftLeftMostChild = new Node(5);
+    Node leftMostChild = new Node(2, leftLeftMostChild, null);
+    Node leftMidChild = new Node(10);
+    Node rightMidChild = new Node(7);
+    Node rightMostChild = new Node(8);
+    Node leftParent = new Node(12, leftMostChild, leftMidChild);
+    Node rightParent = new Node(15, rightMidChild, rightMostChild);
+    Node root = new Node(1000, leftParent, rightParent);
+    return root;
+  }
+
+  @Test
+  public void depthFirstSearch_found_true() {
+    BinaryTree bt = new BinaryTree(searchNode());
+    Assert.assertTrue(bt.depthFirstSearch(7));
+  }
+
+  @Test
+  public void depthFirstSearch_notFound_false() {
+    BinaryTree bt = new BinaryTree(searchNode());
+    Assert.assertFalse(bt.depthFirstSearch(13));
+  }
+
+  @Test
+  public void breadthFirstSearch_found_true() {
+    BinaryTree bt = new BinaryTree(searchNode());
+    Assert.assertTrue(bt.breadthFirstSearch(7));
+  }
+
+  @Test
+  public void breadthFirstSearch_notFound_false() {
+    BinaryTree bt = new BinaryTree(searchNode());
+    Assert.assertFalse(bt.breadthFirstSearch(13));
+  }
+
 }
