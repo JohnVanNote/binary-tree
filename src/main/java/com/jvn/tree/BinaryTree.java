@@ -22,7 +22,7 @@ public class BinaryTree {
 
   private boolean depthFirstSearch(Node root, int search) {
     boolean found = false;
-    System.out.println("Checking node " + root);
+    //System.out.println("Checking node " + root);
     if (root != null) {
       if (root.getData() == search) {
         found = true;
@@ -46,7 +46,7 @@ public class BinaryTree {
 
     while (!queue.isEmpty()) {
       Node node = queue.remove();
-      System.out.println("Checking Node " + node);
+      //System.out.println("Checking Node " + node);
       if (node != null) {
         if (node.getData() == search) {
           found = true;
