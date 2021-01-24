@@ -1,47 +1,50 @@
 package com.jvn.tree;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Node {
 
-  private final int data;
-  private Node left;
-  private Node right;
+  protected final Object data;
+  protected List<Node> children;
 
-  public Node(int data) {
+  public Node(Object data) {
     this.data = data;
-    this.setLeft(null);
-    this.setRight(null);
+    children = initializeChildren();
   }
 
-  public Node(int data, Node left, Node right) {
+  public Node(Object data, List<Node> children) {
     this.data = data;
-    this.setLeft(left == null ? null : new Node(left));
-    this.setRight(right == null ? null : new Node(right));
+    this.setChildren(children);
   }
 
   public Node(Node copyNode) {
-    this(copyNode.getData(), copyNode.getLeft(), copyNode.getRight());
+    this(copyNode.getData(), copyNode.getChildren());
   }
 
-  public int getData() {
+  public Object getData() {
     return data;
   }
 
-  public Node getLeft() {
-    return left;
+  public List<Node> getChildren() {
+    return children;
   }
 
-  public void setLeft(Node left) {
-    this.left = left;
+  public void setChildren(List<Node> children) {
+    this.children = children;
   }
 
-  public Node getRight() {
-    return right;
+  public Node getChild(int index) {
+    return children.get(index);
   }
 
-  public void setRight(Node right) {
-    this.right = right;
+  public void setChild(int index, Node child) {
+    children.set(index, child);
+  }
+
+  public void addChild(Node child) {
+    children.add(child);
   }
 
   @Override
@@ -53,23 +56,25 @@ public class Node {
       return false;
     }
     Node node = (Node) o;
-    return data == node.data &&
-        Objects.equals(left, node.left) &&
-        Objects.equals(right, node.right);
+    return Objects.equals(data, node.data) &&
+        Objects.equals(children, node.children);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, left, right);
+    return Objects.hash(data, children);
   }
 
   @Override
   public String toString() {
     return "Node{" +
         "data=" + data +
-        ", left=" + left +
-        ", right=" + right +
+        ", children=" + children +
         '}';
+  }
+
+  protected List<Node> initializeChildren() {
+    return new ArrayList<>();
   }
 
 }

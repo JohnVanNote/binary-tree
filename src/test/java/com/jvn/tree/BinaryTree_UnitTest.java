@@ -8,25 +8,25 @@ public class BinaryTree_UnitTest {
 
   @DataProvider
   public Object[][] nodes() {
-    return new Node_UnitTest().nodes();
+    return new BinaryNode_UnitTest().nodes();
   }
 
   @Test(dataProvider = "nodes")
-  public void equals_nodes_expectedEqual(Node n1, Node n2, boolean expectedEqual) {
+  public void equals_nodes_expectedEqual(BinaryNode n1, BinaryNode n2, boolean expectedEqual) {
     BinaryTree bt1 = new BinaryTree(n1);
     BinaryTree bt2 = new BinaryTree(n2);
     Assert.assertEquals(bt1.equals(bt2), expectedEqual);
   }
 
-  public Node searchNode() {
-    Node leftLeftMostChild = new Node(5);
-    Node leftMostChild = new Node(2, leftLeftMostChild, null);
-    Node leftMidChild = new Node(10);
-    Node rightMidChild = new Node(7);
-    Node rightMostChild = new Node(8);
-    Node leftParent = new Node(12, leftMostChild, leftMidChild);
-    Node rightParent = new Node(15, rightMidChild, rightMostChild);
-    Node root = new Node(1000, leftParent, rightParent);
+  public BinaryNode searchNode() {
+    BinaryNode leftLeftMostChild = new BinaryNode(5);
+    BinaryNode leftMostChild = new BinaryNode(2, leftLeftMostChild, null);
+    BinaryNode leftMidChild = new BinaryNode(10);
+    BinaryNode rightMidChild = new BinaryNode(7);
+    BinaryNode rightMostChild = new BinaryNode(8);
+    BinaryNode leftParent = new BinaryNode(12, leftMostChild, leftMidChild);
+    BinaryNode rightParent = new BinaryNode(15, rightMidChild, rightMostChild);
+    BinaryNode root = new BinaryNode(1000, leftParent, rightParent);
     return root;
   }
 
